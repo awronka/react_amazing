@@ -1,6 +1,7 @@
 import React from 'react';
 
 function Footer() {
+  console.log('footer')
   return (
    <div className="footer">
      <p>&copy; 2016 &middot; Hashnode &middot; LinearBytes Inc.</p>

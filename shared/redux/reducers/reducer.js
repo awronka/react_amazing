@@ -40,6 +40,7 @@ const postReducer = (state = initialState, action) => {
       };
 
     default:
+      console.log('this',state)
       return state;
   }
 };

@@ -2,6 +2,7 @@ import Post from '../models/post';
 import cuid from 'cuid';
 import slug from 'slug';
 import sanitizeHtml from 'sanitize-html';
+import immutable from 'immutable';
 
 export function getPosts(req, res) {
   Post.find().sort('-dateAdded').exec((err, posts) => {

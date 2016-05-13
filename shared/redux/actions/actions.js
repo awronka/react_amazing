@@ -1,6 +1,7 @@
 import * as ActionTypes from '../constants/constants';
 import Config from '../../../server/config';
 import fetch from 'isomorphic-fetch';
+import {Map, List} from 'immutable';
 
 const baseURL = typeof window === 'undefined' ? process.env.BASE_URL || (`http://localhost:${Config.port}`) : '';
 
@@ -49,6 +50,7 @@ export function addSelectedPost(post) {
 }
 
 export function getPostRequest(post) {
+  console.log('this this this')
   return (dispatch) => {
     return fetch(`${baseURL}/api/getPost?slug=${post}`, {
       method: 'get',
@@ -67,6 +69,7 @@ export function deletePost(post) {
 }
 
 export function addPosts(posts) {
+  console.log(posts)
   return {
     type: ActionTypes.ADD_POSTS,
     posts,

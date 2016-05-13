@@ -18,8 +18,10 @@ export function configureStore(initialState = {}) {
   let store;
 
   if (process.env.CLIENT) {
+    console.log('client')
     store = createStore(rootReducer, initialState, enhancerClient);
   } else {
+        console.log('server')
     store = createStore(rootReducer, initialState, enhancerServer);
   }
 
