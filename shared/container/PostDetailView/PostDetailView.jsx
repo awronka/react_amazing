@@ -59,8 +59,9 @@ PostDetailView.propTypes = {
 };
 
 function mapStateToProps(store) {
+  const post = store.get('post');
   return {
-    post: (store.post),
+    post: (post),
   };
 }
 

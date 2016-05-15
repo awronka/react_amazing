@@ -2,8 +2,10 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import DevTools from '../../container/DevTools/DevTools';
 import rootReducer from '../reducers/reducer';
+import {Map, List, fromJS} from 'immutable';
 
 export function configureStore(initialState = {}) {
+  initialState = Map(initialState);
   let enhancerClient;
   if (process.env.CLIENT) {
     enhancerClient = compose(
@@ -18,10 +20,8 @@ export function configureStore(initialState = {}) {
   let store;
 
   if (process.env.CLIENT) {
-    console.log('client')
     store = createStore(rootReducer, initialState, enhancerClient);
   } else {
-        console.log('server')
     store = createStore(rootReducer, initialState, enhancerServer);
   }
 

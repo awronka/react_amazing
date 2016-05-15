@@ -43,6 +43,8 @@ export function addPostRequest(post) {
 }
 
 export function addSelectedPost(post) {
+  console.log('hit')
+  const imPosts = Map(post)
   return {
     type: ActionTypes.ADD_SELECTED_POST,
     post,
@@ -50,21 +52,23 @@ export function addSelectedPost(post) {
 }
 
 export function getPostRequest(post) {
-  console.log('this this this')
   return (dispatch) => {
     return fetch(`${baseURL}/api/getPost?slug=${post}`, {
       method: 'get',
       headers: new Headers({
         'Content-Type': 'application/json',
       }),
-    }).then((response) => response.json()).then(res => dispatch(addSelectedPost(res.post)));
+    }).then((response) => response.json()).then(res => {
+      console.log('this',res.post)
+      return dispatch(addSelectedPost(res.post))});
   };
 }
 
 export function deletePost(post) {
+  posts = Map(posts)
   return {
     type: ActionTypes.DELETE_POST,
-    post,
+    posts,
   };
 }
 
@@ -80,7 +84,9 @@ export function fetchPosts() {
   return (dispatch) => {
     return fetch(`${baseURL}/api/getPosts`).
       then((response) => response.json()).
-      then((response) => dispatch(addPosts(response.posts)));
+      then((response) => {
+        return dispatch(addPosts(response.posts))
+      });
   };
 }
 

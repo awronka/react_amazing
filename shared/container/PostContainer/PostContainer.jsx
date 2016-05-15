@@ -59,7 +59,7 @@ PostContainer.contextTypes = {
 
 function mapStateToProps(store) {
   return {
-    posts: store.posts,
+    posts: store.get('posts'),
   };
 }
 
