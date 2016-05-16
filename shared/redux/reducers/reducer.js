@@ -4,6 +4,7 @@ import {Map, List} from "immutable";
 const initialState = Map({ posts: [], post: null });
 
 const postReducer = (state = initialState, action) => {
+  console.log(state, action)
   switch (action.type) {
     case ActionTypes.ADD_POST :
       return state.set('post', state.post)
@@ -26,8 +27,12 @@ const postReducer = (state = initialState, action) => {
       return state.set('post', action.post)
 
     case ActionTypes.DELETE_POST :
-      return state.get('posts')
-                  .filter((post) => post._id !== action.post._id)
+        const newArray = List(state.get('posts')
+                  .filter((post) => post._id !== action.post._id))
+        console.log(newArray)
+        state.set('posts', newArray)
+        console.log(state)
+        return state;
 
     default:
      return state;

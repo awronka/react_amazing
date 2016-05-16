@@ -6,6 +6,7 @@ import {Map, List} from 'immutable';
 const baseURL = typeof window === 'undefined' ? process.env.BASE_URL || (`http://localhost:${Config.port}`) : '';
 
 export function addPost(post) {
+  console.log('add posts')
   return {
     type: ActionTypes.ADD_POST,
     name: post.name,
@@ -18,6 +19,7 @@ export function addPost(post) {
 }
 
 export function changeSelectedPost(slug) {
+  console.log('change selected posts')
   return {
     type: ActionTypes.CHANGE_SELECTED_POST,
     slug,
@@ -25,6 +27,7 @@ export function changeSelectedPost(slug) {
 }
 
 export function addPostRequest(post) {
+  console.log('add post request')
   return (dispatch) => {
     fetch(`${baseURL}/api/addPost`, {
       method: 'post',
@@ -43,15 +46,16 @@ export function addPostRequest(post) {
 }
 
 export function addSelectedPost(post) {
-  console.log('hit')
-  const imPosts = Map(post)
+  console.log('hit add selected posts')
+  // const imPost = Map(post)
   return {
     type: ActionTypes.ADD_SELECTED_POST,
-    post,
+    post
   };
 }
 
 export function getPostRequest(post) {
+  console.log('hit get post request')
   return (dispatch) => {
     return fetch(`${baseURL}/api/getPost?slug=${post}`, {
       method: 'get',
@@ -59,28 +63,29 @@ export function getPostRequest(post) {
         'Content-Type': 'application/json',
       }),
     }).then((response) => response.json()).then(res => {
-      console.log('this',res.post)
       return dispatch(addSelectedPost(res.post))});
   };
 }
 
 export function deletePost(post) {
-  posts = Map(posts)
+  console.log('hit delete posts')
+  console.log(post)
   return {
     type: ActionTypes.DELETE_POST,
-    posts,
+    post
   };
 }
 
 export function addPosts(posts) {
-  console.log(posts)
+  console.log('hit add Posts')
   return {
     type: ActionTypes.ADD_POSTS,
-    posts,
+    posts
   };
 }
 
 export function fetchPosts() {
+  console.log('fetch posts')
   return (dispatch) => {
     return fetch(`${baseURL}/api/getPosts`).
       then((response) => response.json()).
@@ -91,6 +96,7 @@ export function fetchPosts() {
 }
 
 export function deletePostRequest(post) {
+  console.log('delete posts request')
   return (dispatch) => {
     fetch(`${baseURL}/api/deletePost`, {
       method: 'post',

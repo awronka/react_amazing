@@ -17,7 +17,7 @@ if (process.env.CLIENT && !window.devToolsExtension) {
   toRender = (<Provider store={store}>
                 <div>
                   <Router history={history} routes={routes} />
-                  <DevTools />
+                  // <DevTools />
                 </div>
               </Provider>);
 } else {

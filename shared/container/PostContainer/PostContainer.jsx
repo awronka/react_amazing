@@ -33,6 +33,7 @@ class PostContainer extends Component {
 
   componentDidMount() {
     if(this.props.posts.length === 0) {
+      console.log('hit')
       this.props.dispatch(Actions.fetchPosts());
     }
   }
@@ -58,6 +59,7 @@ PostContainer.contextTypes = {
 };
 
 function mapStateToProps(store) {
+  console.log(store)
   return {
     posts: store.get('posts'),
   };
