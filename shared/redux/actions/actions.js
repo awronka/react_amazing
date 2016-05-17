@@ -41,7 +41,9 @@ export function addPostRequest(post) {
       headers: new Headers({
         'Content-Type': 'application/json',
       }),
-    }).then((res) => res.json()).then(res => dispatch(addPost(res.post)));
+    }).then((res) => res.json()).then(res => {
+      console.log(res)
+      return dispatch(addPost(res.post))});
   };
 }
 
