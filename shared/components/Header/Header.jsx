@@ -1,11 +1,13 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 require('../../../static/scss/main.scss');
+var css = require('../../../static/css/postcss.css');
 
 function Header(props, context) {
   return (
     <div className="header other-header">
       <div className="header-content">
+      <h1 className="other-header">PostCSS</h1>
         <h1 className="site-title">
           <Link to="/" onClick={props.handleLogoClick}>MERN Starter Blog</Link>
         </h1>

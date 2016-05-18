@@ -49,11 +49,10 @@ mongoose.connect(serverConfig.mongoURL, (error) => {
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
 app.use(sassMiddleware({
-    src: __dirname + '../static/scss',
-    dest: __dirname + '../static/scss/compiled',
+    src: __dirname + '/../static/scss',
+    dest: __dirname + '/../static/scss/compiled',
     debug: true,
-    outputStyle: 'compressed',
-    prefix:  '/prefix'
+    outputStyle: 'compressed'
   }))
 app.use(Express.static(path.resolve(__dirname, '../static')));
 app.use('/api', posts);

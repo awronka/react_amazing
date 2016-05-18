@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 
+
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
 
@@ -21,7 +22,7 @@ module.exports = {
     loaders: [
       {
         test: /\.css$/,
-        loader: 'style!css?modules',
+        loader: "style-loader!css-loader!postcss-loader",
       },
       {
         test: /\.scss$/,
@@ -37,6 +38,9 @@ module.exports = {
       },
     ],
   },
+  postcss: function () {
+        return [require('autoprefixer'), require('precss')];
+    },
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
