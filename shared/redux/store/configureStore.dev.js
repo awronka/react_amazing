@@ -5,9 +5,7 @@ import rootReducer from '../reducers/reducer';
 import {Map, List, fromJS} from 'immutable';
 
 export function configureStore(initialState = {}) {
-  const postList = List(initialState.posts)
   initialState = Map(initialState);
-  console.log(initialState)
   let enhancerClient;
   if (process.env.CLIENT) {
     enhancerClient = compose(
