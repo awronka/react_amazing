@@ -22,7 +22,6 @@ const postReducer = (state = initialState, action) => {
       return state.set('post', action.slug)
 
     case ActionTypes.ADD_POSTS :
-        console.log(state, action)
       return state.set('posts', action.posts)
 
     case ActionTypes.ADD_SELECTED_POST :
