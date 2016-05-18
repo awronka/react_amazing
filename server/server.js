@@ -2,6 +2,9 @@ import Express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import path from 'path';
+import sass from 'node-sass';
+import sassMiddleware from 'node-sass-middleware';
+require.extensions['.scss'] = function () {}
 
 // Webpack Requirements
 import webpack from 'webpack';
@@ -42,10 +45,16 @@ mongoose.connect(serverConfig.mongoURL, (error) => {
   // feed some dummy data in DB.
   dummyData();
 });
-
 // Apply body Parser and server public assets and routes
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
+app.use(sassMiddleware({
+    src: __dirname + '../static/scss',
+    dest: __dirname + '../static/scss/compiled',
+    debug: true,
+    outputStyle: 'compressed',
+    prefix:  '/prefix'
+  }))
 app.use(Express.static(path.resolve(__dirname, '../static')));
 app.use('/api', posts);
 

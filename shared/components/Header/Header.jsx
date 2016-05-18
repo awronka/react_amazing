@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
+require('../../../static/scss/main.scss');
 
 function Header(props, context) {
   return (
-    <div className="header">
+    <div className="header other-header">
       <div className="header-content">
         <h1 className="site-title">
           <Link to="/" onClick={props.handleLogoClick}>MERN Starter Blog</Link>

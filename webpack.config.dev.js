@@ -24,6 +24,10 @@ module.exports = {
         loader: 'style!css?modules',
       },
       {
+        test: /\.scss$/,
+        loaders: [ 'style', 'css?sourceMap', 'sass?sourceMap' ]
+      },
+      {
         test: /\.jsx*$/,
         exclude: [/node_modules/, /.+\.config.js/],
         loader: 'babel',
