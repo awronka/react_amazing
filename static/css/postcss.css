@@ -1,9 +1,11 @@
 @use postcss-discard-comments(removeAll: true);
 /*! test */
+$primary-color: blue;
+
 h1 {
     color: red
 }
 
 .other-header{
-    background-color: green;
+    background-color: $primary-color;
 }

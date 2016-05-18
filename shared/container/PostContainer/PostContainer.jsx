@@ -42,6 +42,7 @@ class PostContainer extends Component {
       <div>
         <Header onClick={this.handleClick} />
         <div className="container">
+        <h1 className="other-header">PostCSS</h1>
           <PostCreateView addPost={this.add}
             showAddPost={this.state.showAddPost}/>
           <PostListView posts={this.props.posts}/>

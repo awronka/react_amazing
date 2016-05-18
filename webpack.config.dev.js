@@ -39,7 +39,7 @@ module.exports = {
     ],
   },
   postcss: function () {
-        return [require('autoprefixer'), require('precss')];
+        return [require('autoprefixer'), require('precss'),require('postcss-scss')];
     },
 
   plugins: [
